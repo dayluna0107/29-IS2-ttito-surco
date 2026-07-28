@@ -37,4 +37,3 @@ Reemplace esta tabla por los dos casos de su asignación. Incluya una captura po
 - URL del repositorio individual.
 - URL pública de GitHub Pages.
 - README actualizado con los dos casos de prueba.
-- Video de máximo 2 minutos demostrando la mejora y sus pruebas.
