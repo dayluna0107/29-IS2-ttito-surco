@@ -1,6 +1,6 @@
-# Préstamos de equipos — base para IS II
+# Préstamos de equipos  Aplicación para Ingeniería de Software II
 
-Miniaplicación estática para la actividad individual de aseguramiento de calidad de software. No usa base de datos ni servidor: guarda los registros en el navegador mediante `localStorage`.
+Miniaplicación estática para la actividad individual de aseguramiento de calidad de software. No usa base de datos ni servidor, guarda los registros en el navegador mediante `localStorage`.
 
 ## Funcionalidad inicial
 
@@ -15,7 +15,7 @@ Miniaplicación estática para la actividad individual de aseguramiento de calid
 2. Abra `index.html` en el navegador para probarla localmente.
 3. Implemente únicamente la mejora asignada en su ficha.
 4. Registre dos casos de prueba en la sección final de este README.
-5. Publique la aplicación en GitHub Pages y entregue los enlaces solicitados.
+5. Publique la aplicación en GitHub Pages y proporcione los enlaces solicitados.
 
 ## Archivos principales
 
