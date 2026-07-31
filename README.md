@@ -1,39 +1,55 @@
-# Préstamos de equipos  Aplicación para Ingeniería de Software II
+# 29-IS2-ttito-surco
 
-Miniaplicación estática para la actividad individual de aseguramiento de calidad de software. No usa base de datos ni servidor, guarda los registros en el navegador mediante `localStorage`.
+**Estudiante:** Ttito Surco  
+**Ficha:** 29 — Eliminar registros devueltos  
+**Curso:** Ingeniería de Software II
 
-## Funcionalidad inicial
+---
 
-- Registra un préstamo de un equipo disponible.
-- Evita registrar datos incompletos, una fecha de devolución anterior a la fecha de préstamo y el préstamo simultáneo del mismo equipo.
-- Muestra los préstamos y permite registrar la devolución.
-- Conserva los datos del navegador mientras no se restablezcan desde la aplicación.
+## Mejora implementada
+
+**Nombre:** Eliminación protegida de registros devueltos
+
+Se agregó un botón rojo **"🗑️ Eliminar registros devueltos"** en la sección de préstamos registrados. Al hacer clic, el sistema solicita confirmación antes de proceder. Si el usuario confirma, se eliminan **únicamente** los registros con estado "Devuelto"; los préstamos activos no se ven afectados. Si el usuario cancela, no se elimina ningún registro.
+
+---
+
+## Criterios de aceptación
+
+- Al confirmar, se eliminan únicamente los registros con estado **Devuelto**.
+- Al cancelar, no se elimina ningún registro.
+- Los préstamos con estado **Activo** nunca son eliminados por esta acción.
+- Si no hay registros devueltos, se muestra un aviso informativo.
+
+---
 
 ## Inicio rápido
 
-1. Copie esta carpeta a su repositorio individual o use el repositorio base como plantilla.
-2. Abra `index.html` en el navegador para probarla localmente.
-3. Implemente únicamente la mejora asignada en su ficha.
-4. Registre dos casos de prueba en la sección final de este README.
-5. Publique la aplicación en GitHub Pages y proporcione los enlaces solicitados.
+1. Abrir `index.html` en el navegador o acceder a la URL de GitHub Pages.
+2. Usar **"Restablecer datos de ejemplo"** para cargar datos de prueba.
+3. Marcar un préstamo como devuelto con el botón **"Devolver"**.
+4. Hacer clic en **"🗑️ Eliminar registros devueltos"** para probar la mejora.
+
+---
 
 ## Archivos principales
 
-- `index.html`: estructura y controles de la aplicación.
-- `style.css`: diseño visual.
-- `app.js`: catálogo, registros, validaciones y almacenamiento local.
+- `index.html` — estructura e interfaz de la aplicación.
+- `style.css` — diseño visual.
+- `app.js` — lógica, validaciones y almacenamiento local.
+
+---
 
 ## Casos de prueba de mi mejora
 
-Reemplace esta tabla por los dos casos de su asignación. Incluya una captura por caso en el repositorio o muestre ambas pruebas en el video.
-
 | Caso | Datos de entrada / acción | Resultado esperado | Resultado obtenido | Estado |
-|---|---|---|---|---|
-| CP-01: caso válido | [Completar] | [Completar] | [Completar] | Aprobado / Fallido |
-| CP-02: caso límite o inválido | [Completar] | [Completar] | [Completar] | Aprobado / Fallido |
+|------|--------------------------|-------------------|-------------------|--------|
+| CP-01: válido | Existen préstamos con estado "Devuelto" y al menos uno "Activo". Acción: hacer clic en "🗑️ Eliminar registros devueltos" y confirmar en el cuadro de diálogo. | El sistema elimina únicamente los registros con estado "Devuelto". Los préstamos activos permanecen en la tabla. Se muestra el mensaje "Se eliminaron X registro(s) devuelto(s) correctamente." | Se eliminaron solo los registros devueltos. El préstamo activo permaneció en la tabla. El mensaje de confirmación apareció correctamente. | Aprobado |
+| CP-02: cancelación | Existen préstamos con estado "Devuelto". Acción: hacer clic en "🗑️ Eliminar registros devueltos" y cancelar en el cuadro de diálogo. | El sistema no elimina ningún registro. La tabla mantiene todos los registros sin cambios. | Al cancelar, la tabla no sufrió ningún cambio. Todos los registros devueltos permanecieron intactos. | Aprobado |
+
+---
 
 ## Entrega
 
-- URL del repositorio individual.
-- URL pública de GitHub Pages.
-- README actualizado con los dos casos de prueba.
+- **Repositorio:** https://github.com/dayluna0107/29-IS2-ttito-surco
+- **GitHub Pages:** https://dayluna0107.github.io/29-IS2-ttito-surco
