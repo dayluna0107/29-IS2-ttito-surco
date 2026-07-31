@@ -1,74 +1,79 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Préstamos de equipos | IS II</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header>
-    <p>Ingeniería de Software II</p>
-    <h1>Registro de préstamos de equipos</h1>
-    <p>Miniaplicación base para una práctica de aseguramiento de calidad.</p>
-    <button onclick="restablecerEjemplo()">Restablecer datos de ejemplo</button>
-  </header>
-
-  <main>
-    <section id="formulario">
-      <h2>Nuevo préstamo</h2>
-      <p>Complete todos los campos. Los datos se guardan solo en este navegador.</p>
-
-      <label for="equipo">Equipo</label>
-      <select id="equipo">
-        <option value="">— Seleccione un equipo —</option>
-      </select>
-
-      <label for="solicitante">Solicitante</label>
-      <input type="text" id="solicitante" placeholder="Nombre completo" />
-
-      <label for="fecha-prestamo">Fecha de préstamo</label>
-      <input type="date" id="fecha-prestamo" />
-
-      <label for="fecha-devolucion">Fecha prevista de devolución</label>
-      <input type="date" id="fecha-devolucion" />
-
-      <button onclick="registrarPrestamo()">Registrar préstamo</button>
-      <p id="mensaje" class="mensaje"></p>
-    </section>
-
-    <section id="lista">
-      <h2>Préstamos registrados</h2>
-      <p>Puede marcar un préstamo como devuelto.</p>
-
-      <div id="acciones-devueltos">
-        <button id="btn-eliminar-devueltos" onclick="eliminarDevueltos()">
-          🗑️ Eliminar registros devueltos
-        </button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Préstamos de equipos | IS II</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Ingeniería de Software II</p>
+        <h1>Registro de préstamos de equipos</h1>
+        <p class="subtitle">Miniaplicación base para una práctica de aseguramiento de calidad.</p>
       </div>
+      <button class="secondary" id="resetDemoBtn" type="button">Restablecer datos de ejemplo</button>
+    </header>
 
-      <p><span id="contador">0 activos</span></p>
+    <main class="layout">
+      <section class="panel form-panel" aria-labelledby="formTitle">
+        <h2 id="formTitle">Nuevo préstamo</h2>
+        <p class="help">Complete todos los campos. Los datos se guardan solo en este navegador.</p>
 
-      <table id="tabla-prestamos">
-        <thead>
-          <tr>
-            <th>Equipo</th>
-            <th>Solicitante</th>
-            <th>Préstamo</th>
-            <th>Devolución prevista</th>
-            <th>Estado</th>
-            <th>Acción</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </section>
-  </main>
+        <form id="loanForm" novalidate>
+          <label for="equipment">Equipo</label>
+          <select id="equipment" required></select>
 
-  <footer>
-    <p>Actividad individual — ver README.md y la guía del docente.</p>
-  </footer>
+          <label for="borrower">Solicitante</label>
+          <input id="borrower" name="borrower" type="text" placeholder="Ej.: Ana Quispe" required />
 
-  <script src="app.js"></script>
-</body>
+          <div class="two-columns">
+            <div>
+              <label for="loanDate">Fecha de préstamo</label>
+              <input id="loanDate" name="loanDate" type="date" required />
+            </div>
+            <div>
+              <label for="returnDate">Fecha prevista de devolución</label>
+              <input id="returnDate" name="returnDate" type="date" required />
+            </div>
+          </div>
+
+          <p class="form-message" id="formMessage" aria-live="polite"></p>
+          <button class="primary" type="submit">Registrar préstamo</button>
+        </form>
+      </section>
+
+      <section class="panel list-panel" aria-labelledby="listTitle">
+        <div class="section-heading">
+          <div>
+            <h2 id="listTitle">Préstamos registrados</h2>
+            <p class="help">Puede marcar un préstamo como devuelto.</p>
+            <button type="button" class="delete-returned-btn" onclick="deleteReturnedLoans()">🗑 Eliminar registros devueltos</button>
+          </div>
+          <span class="counter" id="activeCount">0 activos</span>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Equipo</th>
+                <th>Solicitante</th>
+                <th>Préstamo</th>
+                <th>Devolución prevista</th>
+                <th>Estado</th>
+                <th>Acción</th>
+              </tr>
+            </thead>
+            <tbody id="loanList"></tbody>
+          </table>
+        </div>
+        <p class="empty-state" id="emptyState">Aún no hay préstamos registrados.</p>
+      </section>
+    </main>
+
+    <footer>Actividad individual — ver README.md y la guía del docente.</footer>
+    <script src="app.js"></script>
+  </body>
 </html>
